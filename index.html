@@ -24,32 +24,38 @@
             <div class="form-content">
                 <fieldset>
                     <div>
-                    <label for="firstName">First Name</label>
+                    <label for="firstName">First Name*</label>
                     <input type="text" id="firstName" name="firstName" minlength="2" required>
+                    <p id = "firstNameWarning" class="warning"></p>
                 </div>
                     <div>
-                        <label for="lastName">Last Name</label>
+                        <label for="lastName">Last Name*</label>
                         <input type="text" id="lastName" name="lastName" minlength="2" required>
+                        <p id = "lastNameWarning" class="warning"></p>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div>
-                        <label for="email">Email</label>
+                        <label for="email">Email*</label>
                         <input type="email" id="email" name="email" required>
+                        <p id = "emailWarning" class="warning"></p>
                     </div>
                     <div>
-                        <label for="phone">Phone</label>
+                        <label for="phone">Phone*</label>
                         <input type="tel" name="phone" id="phone" required>
+                        <p id = "phoneWarning" class="warning"></p>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div>
-                        <label for="passwordConfirmation">Password</label>
+                        <label for="password">Password*</label>
                         <input type="password" name="password" id="password" minlength="10" required>
+                        <p id = "passwordWarning" class="warning"></p>
                     </div>
                     <div>
-                        <label for="passwordConfirmation">Confirm password</label>
+                        <label for="passwordConfirmation">Confirm password*</label>
                         <input type="password" name="passwordConfirmation" id="passwordConfirmation" minlength="10" required>
+                        <p id = "confirmWarning" class="warning"></p>
                     </div>
                 </fieldset>
             </div>
