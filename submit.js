@@ -42,12 +42,11 @@ emailInput.addEventListener("blur", () => inputValidation(emailInput, emailWarni
 phoneInput.addEventListener("blur", () => inputValidation(phoneInput, phoneWarning, "Phone number is required"))
 
 const passwordValidation = function () {
-    const validatePassword = function(passwordInput, confirmationInput){
-        if(passwordInput.value.length<10){
+    const validatePassword = function (passwordInput, confirmationInput) {
+        if (passwordInput.value.length < 10) {
             inputValidation(passwordInput, passwordWarning, "Should have at least 10 characters")
             return false
-        }
-        if (passwordInput.value !== confirmationInput.value) {
+        } else if (passwordInput.value !== confirmationInput.value) {
             // Display an error message or take appropriate action
             passwordWarning.style.display = "block";
             passwordWarning.innerHTML = "Confirmation and password don't match";
@@ -56,7 +55,7 @@ const passwordValidation = function () {
             confirmationWarning.style.display = "block";
             confirmationWarning.innerHTML = "Confirmation and password don't match";
             return false;
-        }else{
+        } else {
             passwordWarning.style.display = "none";
             passwordWarning.innerHTML = "";
             confirmationWarning.style.display = "none";
@@ -66,7 +65,6 @@ const passwordValidation = function () {
             inputValidation(passwordInput, passwordWarning, "")
         }
 
-        
         // If validation passes, you can update the UI or take further action
         console.log("Password validated")
         return true;
@@ -86,17 +84,27 @@ const passwordValidation = function () {
     return validatePassword;
 }
 
-passwordValidation();
-
+resetButton.addEventListener("click", () => {
+    const inputs = Array.from(document.querySelectorAll("input"));
+    inputs.forEach(input => input.classList.remove('inval'))
+    const warnings = Array.from(document.querySelectorAll("p"))
+    warnings.forEach(warning => {
+        warning.style.display = "none";
+        warning.innerHTML = "";
+    })
+})
 
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     // variables from the inputs
+    const passwordInput = document.getElementById('password');
+    const confirmationInput = document.getElementById('passwordConfirmation');
+    const validatePassword = passwordValidation();
 
     inputValidation(firstNameInput, firstNameWarning, "Should have at least 2 characters");
     inputValidation(lastNameInput, lastNameWarning, "Should have at least 2 characters");
     inputValidation(emailInput, emailWarning, "Please provide a valid email");
     inputValidation(phoneInput, phoneWarning, "Phone number is required");
-    passwordValidation();
+    validatePassword(passwordInput, confirmationInput);
 
 })
